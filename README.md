@@ -16,7 +16,7 @@ Time elapsed = 6.89 mins, Training: loss = 389.51047, mrr = 0.63130, ndcg = 0.71
 0	lr=0.0001,lamb=0.55,batch_size=400,numNegative=100,featEmbedDim=64,idenEmbedDim=64,outputDim=128,pathNum=7	Test loss:2033.5934; Test mrr:0.25339168; Test ndcg:0.3976466; Test hr1:0.14939758; Test hr3:0.2633283; Test hr5:0.34176204; Test hr10:0.46430722
 ```
 
-The variant models below had been supported: 
+These variant models below had been supported: 
 
 - ReGCN
 - ReGCN_{MP}

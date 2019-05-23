@@ -18,7 +18,9 @@ The variant models below had been supported:
 - RecoGCN
 
 ## dependencies (other versions may also work):
-- python==2.7
-- tensorflow==1.4.1
-- keras==2.1.5
-- numpy==1.15.4
+- python == 3.6
+- tensorflow == 1.13.1
+- numpy == 1.16.3
+- h5py == 2.9.0
+- GPUtil ==1.4.0
+- setproctitle == 1.1.10

@@ -1,4 +1,4 @@
-## This is the code of paper 1329 in IJCAI2019
+## This is the code of submission 485 in CIKM2019
 
 ## prepare data
 You can get the data from amazon website and process it using the script
@@ -24,28 +24,11 @@ python script/train.py train [model name]
 python script/train.py test [model name] 
 ```
 
-The model below had been supported: 
+The variant models below had been supported: 
 
-Baselines:
-- ASVD
-- DIN
-- LSTM
-- LSTMPP
-- NARM
-- CARNN
-- Time1LSTM
-- Time2LSTM
-- Time3LSTM
-- DIEN
-
-Our models:
-- A2SVD
-- T_SeqRec
-- TC_SeqRec_I
-- TC_SeqRec_G
-- TC_SeqRec
-- SLi_Rec_Fixed
-- SLi_Rec_Adaptive
+- ReGCN
+- ReGCN_{MP}
+- RecoGCN
 
 ## dependencies (other versions may also work):
 - python==2.7

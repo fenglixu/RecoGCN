@@ -6,7 +6,7 @@
 python train.py 
 ```
 
-## example of evaluation output
+## example output
 ```
 Time elapsed = 6.89 mins, Training: loss = 389.51047, mrr = 0.63130, ndcg = 0.71369, hr1 = 0.50939, hr3 = 0.69945, hr5 = 0.78027, hr10 = 0.87522 | Val:loss = 2172.41870, mrr = 0.25467, ndcg = 0.40172, hr1 = 0.15110, hr3 = 0.25807, hr5 = 0.33136, hr10 = 0.45893
 ```

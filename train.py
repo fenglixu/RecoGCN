@@ -16,7 +16,7 @@ config.gpu_options.allow_growth=True
 
 def genPathInfo(nonlinearity, featEmbedDim, idenEmbedDim, pathNum):
 	'''
-	The function that specify the designed Meta-path.
+	The function that specify the designed Meta-path. Feel free to try other Meta-paths.
 
 	Input: nonlinearity --- the nonlinear activation function.
 	       featMebedDim, idenEmbedDim --- the embedding dimension node feature and identity.
@@ -30,9 +30,9 @@ def genPathInfo(nonlinearity, featEmbedDim, idenEmbedDim, pathNum):
 					pathInfo(1, 'U_I', [layerInfo(featEmbedDim+idenEmbedDim, 0, 2, 20, outputDim, 1, nonlinearity, 'U_I')]),
 					pathInfo(1, 'U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 20, outputDim, 1, nonlinearity, 'U_AI')]), 				
 					pathInfo(3, 'U_A_U_I', [layerInfo(featEmbedDim+idenEmbedDim, 0, 2, 5, hiddenDim, 1, nonlinearity, 'U_I'), layerInfo(hiddenDim, 1, 0, 5, hiddenDim, 1, nonlinearity, 'A_U'), layerInfo(hiddenDim, 0, 1, 5, outputDim, 1, nonlinearity, 'U_A')]),
-					pathInfo(3, 'U_I_U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 2, 0, 5, hiddenDim, 1, nonlinearity, 'I_U'), layerInfo(hiddenDim, 0, 2, 5, outputDim, 1, nonlinearity, 'U_I')]),
 					pathInfo(3, 'U_AI_U_I', [layerInfo(featEmbedDim+idenEmbedDim, 0, 2, 5, hiddenDim, 1, nonlinearity, 'U_I'), layerInfo(hiddenDim, 3, 0, 5, hiddenDim, 1, nonlinearity, 'AI_U'), layerInfo(hiddenDim, 0, 3, 5, outputDim, 1, nonlinearity, 'U_AI')]),
-					pathInfo(3, 'U_A_U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 1, 0, 5, hiddenDim, 1, nonlinearity, 'A_U'), layerInfo(hiddenDim, 0, 1, 5, outputDim, 1, nonlinearity, 'U_A')]),
+					#pathInfo(3, 'U_A_U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 1, 0, 5, hiddenDim, 1, nonlinearity, 'A_U'), layerInfo(hiddenDim, 0, 1, 5, outputDim, 1, nonlinearity, 'U_A')]),
+					#pathInfo(3, 'U_I_U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 2, 0, 5, hiddenDim, 1, nonlinearity, 'I_U'), layerInfo(hiddenDim, 0, 2, 5, outputDim, 1, nonlinearity, 'U_I')])
 					]
 
 
@@ -41,8 +41,8 @@ def genPathInfo(nonlinearity, featEmbedDim, idenEmbedDim, pathNum):
 					pathInfo(3, 'I_U_A_U', [layerInfo(featEmbedDim+idenEmbedDim, 1, 0, 5, hiddenDim, 1, nonlinearity, 'A_U'), layerInfo(hiddenDim, 0, 1, 5, hiddenDim, 1, nonlinearity, 'U_A'), layerInfo(hiddenDim, 2, 0, 5, outputDim, 1, nonlinearity, 'I_U')]),					
 					pathInfo(3, 'I_U_AI_U', [layerInfo(featEmbedDim+idenEmbedDim, 3, 0, 5, hiddenDim, 1, nonlinearity, 'AI_U'), layerInfo(hiddenDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 2, 0, 5, outputDim, 1, nonlinearity, 'I_U')]),
 					pathInfo(1, 'I_U', [layerInfo(featEmbedDim+idenEmbedDim, 2, 0, 20, outputDim, 1, nonlinearity, 'I_U')]),
-					pathInfo(2, 'I_U_I', [layerInfo(featEmbedDim+idenEmbedDim, 2, 0, 5, hiddenDim, 1, nonlinearity, 'I_U'), layerInfo(hiddenDim, 0, 2, 5, outputDim, 1, nonlinearity, 'U_I')]),
-					pathInfo(2, 'I_U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 2, 0, 5, outputDim, 1, nonlinearity, 'I_U')])
+					#pathInfo(2, 'I_U_I', [layerInfo(featEmbedDim+idenEmbedDim, 2, 0, 5, hiddenDim, 1, nonlinearity, 'I_U'), layerInfo(hiddenDim, 0, 2, 5, outputDim, 1, nonlinearity, 'U_I')]),
+					#pathInfo(2, 'I_U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 2, 0, 5, outputDim, 1, nonlinearity, 'I_U')])
 					]
 
 	
@@ -50,17 +50,17 @@ def genPathInfo(nonlinearity, featEmbedDim, idenEmbedDim, pathNum):
 	agent_path = [pathInfo(1, 'A_U', [layerInfo(featEmbedDim+idenEmbedDim, 1, 0, 20, outputDim, 1, nonlinearity, 'A_U')]), 
 				pathInfo(2, 'A_U_I', [layerInfo(featEmbedDim+idenEmbedDim, 0, 2, 5, hiddenDim, 1, nonlinearity, 'U_I'), layerInfo(hiddenDim, 1, 0, 5, outputDim, 1, nonlinearity, 'A_U')]),
 				pathInfo(2, 'A_U_AI', [layerInfo(featEmbedDim+idenEmbedDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 1, 0, 5, outputDim, 1, nonlinearity, 'A_U')]),
-				pathInfo(2, 'A_U_I_U', [layerInfo(featEmbedDim+idenEmbedDim, 2, 0, 5, hiddenDim, 1, nonlinearity, 'I_U'),layerInfo(hiddenDim, 0, 2, 5, hiddenDim, 1, nonlinearity, 'U_I'), layerInfo(hiddenDim, 1, 0, 5, outputDim, 1, nonlinearity, 'A_U')]),
-				pathInfo(2, 'A_U_AI_U', [layerInfo(featEmbedDim+idenEmbedDim, 3, 0, 5, hiddenDim, 1, nonlinearity, 'AI_U'),layerInfo(hiddenDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 1, 0, 5, outputDim, 1, nonlinearity, 'A_U')]),
+				#pathInfo(2, 'A_U_I_U', [layerInfo(featEmbedDim+idenEmbedDim, 2, 0, 5, hiddenDim, 1, nonlinearity, 'I_U'),layerInfo(hiddenDim, 0, 2, 5, hiddenDim, 1, nonlinearity, 'U_I'), layerInfo(hiddenDim, 1, 0, 5, outputDim, 1, nonlinearity, 'A_U')]),
+				#pathInfo(2, 'A_U_AI_U', [layerInfo(featEmbedDim+idenEmbedDim, 3, 0, 5, hiddenDim, 1, nonlinearity, 'AI_U'),layerInfo(hiddenDim, 0, 3, 5, hiddenDim, 1, nonlinearity, 'U_AI'), layerInfo(hiddenDim, 1, 0, 5, outputDim, 1, nonlinearity, 'A_U')]),
 				]
 
-	user_path_len = min(pathNum, 7)
+	user_path_len = min(pathNum, 5)
 	user_path = user_path[:user_path_len]
 
-	item_path_len = min(pathNum, 6)
+	item_path_len = min(pathNum, 4)
 	item_path = item_path[:item_path_len]
 
-	agent_path_len = min(pathNum, 5)
+	agent_path_len = min(pathNum, 3)
 	agent_path = agent_path[:agent_path_len]
 	pathInfos = {'user_path': user_path, 'item_path': item_path, 'agent_path':agent_path}
 	return pathInfos

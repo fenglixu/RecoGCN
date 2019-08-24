@@ -1,4 +1,4 @@
-## This is the code of submission 485 in CIKM2019
+## This repo is a tensorflow implementation of the RecoGCN
 
 
 ## evaluate model

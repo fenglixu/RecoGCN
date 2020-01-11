@@ -32,7 +32,17 @@ These variant models below had been supported:
 
 ## dataset descriptions
 
-Below is a piece of code which is taken from train.py. ```adj[x][y]``` denotes the adjancy relationship from x to y. Here, 0 stands for user, 1 is selling agent, 2 and 3 are two kinds of items. The shape of ```adj[x][y]``` is ```[Num_of_node_x ,maximum_link]```. Note that maximum_link should be the same for each of these relations. ```train_sample, val_sample, test_sample``` are triplet of ```[user, selling_agent, item]``` pairs. Each type of node is encoded from 0. ```item_freq``` is ```[item_id, item_frequency]``` matrix denotes the occur frequency of each item in train set. ```user_feature, agent_feature, item_feature``` are three featrue matrix of shape ```[node_num, feature_num]```. Here features for each node are multi-hot encoded, and different type of node can have different feature numbers. Finally, the last three are statistics of the node numbers.
+Below is a piece of code which is taken from train.py. 
+
+```adj[x][y]``` denotes the adjancy relationship from x to y. Here, 0 stands for user, 1 is selling agent, 2 and 3 are two kinds of items. The shape of ```adj[x][y]``` is ```[Num_of_node_x ,maximum_link]```. Note that maximum_link should be the same for each of these relations. 
+
+```train_sample, val_sample, test_sample``` are triplet of ```[user, selling_agent, item]``` pairs. Each type of node is encoded from 0. 
+
+```item_freq``` is ```[item_id, item_frequency]``` matrix denotes the occur frequency of each item in train set.
+
+```user_feature, agent_feature, item_feature``` are three featrue matrix of shape ```[node_num, feature_num]```. Here features for each node are multi-hot encoded, and different type of node can have different feature numbers. 
+
+Finally, the last three are statistics of the node numbers.
 
 ```
 adj = {0:{}, 1:{}, 2:{}, 3:{}}

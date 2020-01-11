@@ -29,3 +29,31 @@ These variant models below had been supported:
 - h5py == 2.9.0
 - GPUtil ==1.4.0
 - setproctitle == 1.1.10
+
+## dataset descriptions
+
+Below is a piece of code which is taken from train.py. ```adj[x][y]``` denotes the adjancy relationship from x to y. Here, 0 stands for user, 1 is selling agent, 2 and 3 are two kinds of items. The shape of ```adj[x][y]``` is ```[Num_of_node_x ,maximum_link]```. Note that maximum_link should be the same for each of these relations. ```train_sample, val_sample, test_sample``` are triplet of ```[user, selling_agent, item]``` pairs. Each type of node is encoded from 0. ```item_freq``` is ```[item_id, item_frequency]``` matrix denotes the occur frequency of each item in train set. ```user_feature, agent_feature, item_feature``` are three featrue matrix of shape ```[node_num, feature_num]```. Here features for each node are multi-hot encoded, and different type of node can have different feature numbers. Finally, the last three are statistics of the node numbers.
+
+```
+adj = {0:{}, 1:{}, 2:{}, 3:{}}
+with h5py.File(dataset, 'r') as f:
+	adj[0][1] = f['adj01'][:]
+	adj[1][0] = f['adj10'][:]
+	adj[0][2] = f['adj02'][:]
+	adj[2][0] = f['adj20'][:]
+	adj[0][3] = f['adj03'][:]
+	adj[3][0] = f['adj30'][:]
+
+	train_sample = f['train_sample'][:]
+	val_sample = f['val_sample'][:]
+	test_sample = f['test_sample'][:]
+		
+	item_freq = f['item_freq'][:]
+	user_feature = f['user_feature'][:]
+	agent_feature = f['agent_feature'][:]
+	item_feature = f['item_feature'][:]
+
+	userCnt = f['userCnt'][()]
+	agentCnt = f['agentCnt'][()]
+	itemCnt = f['itemCnt'][()]
+```

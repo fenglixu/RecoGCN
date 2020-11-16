@@ -67,3 +67,15 @@ with h5py.File(dataset, 'r') as f:
 	agentCnt = f['agentCnt'][()]
 	itemCnt = f['itemCnt'][()]
 ```
+
+## citation
+If you use our code or dataset in your research, please cite:
+```
+@inproceedings{xu2019relation,
+  title={Relation-aware graph convolutional networks for agent-initiated social e-commerce recommendation},
+  author={Xu, Fengli and Lian, Jianxun and Han, Zhenyu and Li, Yong and Xu, Yujian and Xie, Xing},
+  booktitle={Proceedings of the 28th ACM International Conference on Information and Knowledge Management},
+  pages={529--538},
+  year={2019}
+}
+```

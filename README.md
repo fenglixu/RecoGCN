@@ -1,17 +1,17 @@
-## This repo is a tensorflow implementation of the RecoGCN
+## This repo contains a tensorflow implementation of RecoGCN and the experiment dataset
 
 
-## evaluate model
+## Evaluate model
 ```
 python train.py 
 ```
 
-## example training output
+## Example training output
 ```
 Time elapsed = 6.89 mins, Training: loss = 389.51047, mrr = 0.63130, ndcg = 0.71369, hr1 = 0.50939, hr3 = 0.69945, hr5 = 0.78027, hr10 = 0.87522 | Val:loss = 2172.41870, mrr = 0.25467, ndcg = 0.40172, hr1 = 0.15110, hr3 = 0.25807, hr5 = 0.33136, hr10 = 0.45893
 ```
 
-## example evaluation result
+## Example evaluation result
 ```
 0	lr=0.0001,lamb=0.55,batch_size=400,numNegative=100,featEmbedDim=64,idenEmbedDim=64,outputDim=128,pathNum=7	Test loss:2033.5934; Test mrr:0.25339168; Test ndcg:0.3976466; Test hr1:0.14939758; Test hr3:0.2633283; Test hr5:0.34176204; Test hr10:0.46430722
 ```
@@ -22,7 +22,7 @@ These variant models below had been supported:
 - ReGCN_{MP}
 - RecoGCN
 
-## dependencies (other versions may also work):
+## Dependencies (other versions may also work):
 - python == 3.6
 - tensorflow == 1.13.1
 - numpy == 1.16.3
@@ -30,20 +30,8 @@ These variant models below had been supported:
 - GPUtil ==1.4.0
 - setproctitle == 1.1.10
 
-## dataset descriptions
-
-Below is a piece of code which is taken from train.py. 
-
-```adj[x][y]``` denotes the adjancy relationship from x to y. Here, 0 stands for user, 1 is selling agent, 2 and 3 are two kinds of items. The shape of ```adj[x][y]``` is ```[Num_of_node_x ,maximum_link]```. Each line stores the node ids of type y who are linked with node x. Note that maximum_link should be the same for each of these relations. 
-
-```train_sample, val_sample, test_sample``` are triplet of ```[user, selling_agent, item]``` pairs. Each type of node is encoded from 0. 
-
-```item_freq``` is ```[item_id, item_frequency]``` matrix denotes the occur frequency of each item in train set.
-
-```user_feature, agent_feature, item_feature``` are three featrue matrix of shape ```[node_num, feature_num]```. Here features for each node are multi-hot encoded, and different type of node can have different feature numbers. 
-
-Finally, the last three are statistics of the node numbers.
-
+## Dataset
+You can access the experiment data in "data.hdf5" with h5py python package. An example loading code is provided as follow.
 ```
 adj = {0:{}, 1:{}, 2:{}, 3:{}}
 with h5py.File(dataset, 'r') as f:
@@ -67,8 +55,16 @@ with h5py.File(dataset, 'r') as f:
 	agentCnt = f['agentCnt'][()]
 	itemCnt = f['itemCnt'][()]
 ```
+The data structure is explained as follow.
+```adj[x][y]``` denotes the adjancy relationship from x to y. Here, 0 stands for user, 1 is selling agent, 2 and 3 are two kinds of items. The shape of ```adj[x][y]``` is ```[Num_of_node_x ,maximum_link]```. Each line stores the node ids of type y who are linked with node x. Note that maximum_link should be the same for each of these relations. 
 
-## citation
+```train_sample, val_sample, test_sample``` are triplet of ```[user, selling_agent, item]``` pairs. Each type of node is encoded from 0. 
+
+```item_freq``` is ```[item_id, item_frequency]``` matrix denotes the occur frequency of each item in train set.
+
+```user_feature, agent_feature, item_feature``` are three featrue matrix of shape ```[node_num, feature_num]```. Here features for each node are multi-hot encoded, and different type of node can have different feature numbers. 
+
+## Citation
 If you use our code or dataset in your research, please cite:
 ```
 @inproceedings{xu2019relation,

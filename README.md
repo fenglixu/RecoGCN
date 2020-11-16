@@ -1,7 +1,7 @@
 ## This repo contains a tensorflow implementation of RecoGCN and the experiment dataset
 
 
-## Evaluate model
+## Running the RecoGCN model
 ```
 python train.py 
 ```
@@ -55,7 +55,9 @@ with h5py.File(dataset, 'r') as f:
 	agentCnt = f['agentCnt'][()]
 	itemCnt = f['itemCnt'][()]
 ```
+
 The data structure is explained as follow.
+
 ```adj[x][y]``` denotes the adjancy relationship from x to y. Here, 0 stands for user, 1 is selling agent, 2 and 3 are two kinds of items. The shape of ```adj[x][y]``` is ```[Num_of_node_x ,maximum_link]```. Each line stores the node ids of type y who are linked with node x. Note that maximum_link should be the same for each of these relations. 
 
 ```train_sample, val_sample, test_sample``` are triplet of ```[user, selling_agent, item]``` pairs. Each type of node is encoded from 0. 
